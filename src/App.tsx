@@ -7,7 +7,7 @@ import {DataCounter} from "./components/DataCounter/DataCounter";
 
 
 function App() {
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(1);
 
     const [maxValueCounter, setMaxValueCounter] = useState(5);
     const [minValueCounter, setMinValueCounter] = useState(0);
