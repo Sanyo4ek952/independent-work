@@ -5,6 +5,7 @@ type InputCounterValueProps = {
     title: string
     maxValueCounter?: number
     minValueCounter?: number
+    dataCounterError: boolean
     onChange: (value: number) => void
 }
 
@@ -14,20 +15,27 @@ export const InputCounterValue = (
         onChange,
         maxValueCounter,
         minValueCounter,
+        dataCounterError,
     }: InputCounterValueProps) => {
 
+
+
+
     return (
-        <InputCounterValueContainer>
+        <InputCounterValueContainer dataCounterError={dataCounterError}>
             <div>{title}</div>
-            <input value={maxValueCounter ? maxValueCounter : minValueCounter}
+            <input  className={` defaultClass classAnother ${maxValueCounter ? 'maxValueCounter' : maxValueCounter ?  'minValueCounter': ''}`} value={maxValueCounter ? maxValueCounter : minValueCounter}
 
                    onChange={(e) => onChange(Number(e.currentTarget.value))} type="number"/>
         </InputCounterValueContainer>
     );
 };
 
+type InputCounterValueContainerProps = {
+    dataCounterError: boolean
+}
 
-const InputCounterValueContainer = styled.div`
+const InputCounterValueContainer = styled.div<InputCounterValueContainerProps>`
     font-size: 26px;
     display: flex;
     justify-content: space-between;
@@ -38,5 +46,6 @@ const InputCounterValueContainer = styled.div`
         width: 200px;
         text-align: center;
         border-radius: 8px;
-    }
+        background-color: ${props => props.dataCounterError ? "rgba(239,45,52,0.55)" : "white"};
+
 `

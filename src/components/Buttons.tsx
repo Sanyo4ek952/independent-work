@@ -8,6 +8,7 @@ type ButtonProps = {
     maxValueCounter: number
     counterIncButtonsHandler: () => void
     counterResButtonsHandler: () => void
+    disabledDisplayCounter:boolean
 }
 
 export const Buttons = (
@@ -16,18 +17,19 @@ export const Buttons = (
         minValueCounter,
         maxValueCounter,
         counterResButtonsHandler,
-        counterIncButtonsHandler
+        counterIncButtonsHandler,
+        disabledDisplayCounter
     }: ButtonProps) => {
     return (
         <div className={s.counterButtons}>
             <Button
                 title={'inc'}
-                disabled={maxValueCounter === counterValue}
+                disabled={maxValueCounter === counterValue || disabledDisplayCounter}
                 onClick={counterIncButtonsHandler}
             />
             <Button
                 title={'reset'}
-                disabled={counterValue === minValueCounter}
+                disabled={counterValue === minValueCounter || disabledDisplayCounter}
                 onClick={counterResButtonsHandler}/>
         </div>
     );

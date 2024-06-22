@@ -5,15 +5,18 @@ type ButtonProps = {
     colorValue?: boolean
     disabled?: boolean
     counterValue?: number
+    dataCounterError?: boolean
     title: string
-    onClick: () => void
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+
 }
 
 export const Button = (props: ButtonProps) => {
 
 
     return (
-        <button disabled={props.disabled} onClick={props.onClick} className={s.button}>
+        <button disabled={props.disabled || props.dataCounterError} onClick={(e) => props.onClick(e)}
+                className={s.button}>
             {props.title}
         </button>
     );

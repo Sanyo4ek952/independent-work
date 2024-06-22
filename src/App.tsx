@@ -12,23 +12,24 @@ function App() {
     const [maxValueCounter, setMaxValueCounter] = useState(5);
     const [minValueCounter, setMinValueCounter] = useState(0);
 
-    const [disabled, setDisabled] = useState<boolean>(false);
+    const [disabledDisplayCounter, setDisabledDisplayCounter] = useState<boolean>(false);
     return (
         <div className="App">
             <Counter
                 counter={counter}
                 maxValueCounter={maxValueCounter}
                 minValueCounter={minValueCounter}
-                disabled={disabled}
+                disabledDisplayCounter={disabledDisplayCounter}
                 setCounter={setCounter}
-                            />
+            />
             <DataCounter
                 setMaxValueCounter={setMaxValueCounter}
                 setMinValueCounter={setMinValueCounter}
                 maxValueCounter={maxValueCounter}
                 minValueCounter={minValueCounter}
                 setCounter={setCounter}
-                setDisabled={setDisabled}/>
+                disabledDisplayCounter={disabledDisplayCounter}
+                setDisabledDisplayCounter={setDisabledDisplayCounter}/>
             {/*<Counter2/>*/}
         </div>
     );

@@ -8,7 +8,7 @@ type CounterProps = {
     maxValueCounter: number
     setCounter: (counter: number) => void
     minValueCounter: number
-    disabled:boolean
+    disabledDisplayCounter:boolean
 }
 
 export const Counter = (
@@ -17,7 +17,7 @@ export const Counter = (
         maxValueCounter,
         setCounter,
         minValueCounter,
-        disabled
+        disabledDisplayCounter
     }: CounterProps) => {
 
 
@@ -33,10 +33,12 @@ export const Counter = (
     return (
         <div className={s.counter}>
             <CounterDisplay
-                disabled={disabled}
+                disabledDisplayCounter={disabledDisplayCounter}
                 maxValueCounter={maxValueCounter}
+                minValueCounter={minValueCounter}
                 counterValue={counter}/>
             <Buttons counterValue={counter}
+                     disabledDisplayCounter={disabledDisplayCounter}
                      maxValueCounter={maxValueCounter}
                      minValueCounter={minValueCounter}
                      counterIncButtonsHandler={counterIncButtonsHandler}
