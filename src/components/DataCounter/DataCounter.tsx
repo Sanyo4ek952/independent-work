@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes} from 'react';
+import React from 'react';
 import s from "../Counter/counter.module.css";
 import {Button} from "../Button";
 import {InputCounterValue} from "./Input/InputCounterValue";
@@ -22,42 +22,22 @@ export const DataCounter = (
         setMinValueCounter,
         setCounter,
         setDisabledDisplayCounter,
-        disabledDisplayCounter,
     }: DataCounterProps) => {
-    const [dataCounterError, setDataCounterError] = React.useState(false)
-
 
     const onChangeStarValueHandler = (value: number) => {
         setMinValueCounter(value)
         setDisabledDisplayCounter(true)
-        if (minValueCounter > maxValueCounter) {
-            setDataCounterError(true)
-        }
-        if (minValueCounter < 0) {
-            setDataCounterError(true)
-        }
-        if (maxValueCounter > minValueCounter && minValueCounter > 0) {
-            setDataCounterError(false)
-        }
+
     }
 
-    const error  = minValueCounter < 0 || minValueCounter > maxValueCounter || (maxValueCounter > minValueCounter && minValueCounter > 0)
+    const error  = minValueCounter < 0 || minValueCounter >= maxValueCounter
     const onChangeMaxValueHandler = (value: number) => {
         setMaxValueCounter(value)
         setDisabledDisplayCounter(true)
-        if (minValueCounter > maxValueCounter) {
-            setDataCounterError(true)
-        }
-        if (minValueCounter < 0) {
-            setDataCounterError(true)
-        }
-        if (maxValueCounter > minValueCounter && minValueCounter > 0) {
-            setDataCounterError(false)
-        }
     }
 
 
-    const onClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const onClickButton = () => {
         setMinValueCounter(minValueCounter)
         setMaxValueCounter(maxValueCounter)
         setCounter(minValueCounter)
@@ -68,11 +48,11 @@ export const DataCounter = (
         <div className={s.counter}>
             {error ? <ErrorStyle>Некоректное значение</ErrorStyle> : ""}
             <InputCounterValue title={"start value"}
-                               dataCounterError={dataCounterError}
+                               dataCounterError={error}
                                minValueCounter={minValueCounter}
                                onChange={onChangeStarValueHandler}/>
             <InputCounterValue title={"max value"}
-                               dataCounterError={dataCounterError}
+                               dataCounterError={error}
                                maxValueCounter={maxValueCounter}
                                onChange={onChangeMaxValueHandler}/>
             <div className={s.counterButtons}>

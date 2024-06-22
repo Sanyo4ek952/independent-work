@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Counter} from "./components/Counter/Counter";
-import {Counter2} from "./components/Counter2/Counter2";
 import {DataCounter} from "./components/DataCounter/DataCounter";
 
 
 function App() {
-    const [counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState(0);
 
     const [maxValueCounter, setMaxValueCounter] = useState(5);
     const [minValueCounter, setMinValueCounter] = useState(0);
