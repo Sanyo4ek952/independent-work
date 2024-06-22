@@ -30,7 +30,7 @@ export const DataCounter = (
 
     }
 
-    const error  = minValueCounter < 0 || minValueCounter >= maxValueCounter
+   const error  = minValueCounter < 0 || minValueCounter >= maxValueCounter
     const onChangeMaxValueHandler = (value: number) => {
         setMaxValueCounter(value)
         setDisabledDisplayCounter(true)
