@@ -48,7 +48,7 @@ export const DataCounter = (
         if (minValueCounter > maxValueCounter) {
             setDataCounterError(true)
         }
-        if (minValueCounter < 0) {
+        if (minValueCounter < 1) {
             setDataCounterError(true)
         }
         if (maxValueCounter > minValueCounter && minValueCounter > 0) {
